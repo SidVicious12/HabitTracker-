@@ -1,13 +1,30 @@
 body {
-    font-family: sans-serif;
-    background: #f5f6fa;
-    color: #222;
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    max-width: 700px;
+    margin: 4rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   }
+  
   h1 {
     text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+  }
+  
+  #stats {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: #16a085;
+  }
+  
+  canvas {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
   }
