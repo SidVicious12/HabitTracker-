@@ -1,5 +1,5 @@
-const mockData = {
-  "Year": [
+
+const mockData = {  "Year": [
     { date: "2025-05-01", value: 2025 },
     { date: "2025-05-02", value: 2025 }
   ],
@@ -23,4 +23,5 @@ const mockData = {
     { date: "2025-05-01", value: "Yes" },
     { date: "2025-05-02", value: "Yes" }
   ]
-};
+    // ... your mock data object ...
+  };
