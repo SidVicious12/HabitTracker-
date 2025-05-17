@@ -9,12 +9,13 @@ async function fetchData() {
     console.log("Fetched data:", data); // 👈 Debug log
 
     const parsed = data
-      .filter(entry => entry && typeof entry.Timestamp === 'string' && entry.Timestamp.includes(" "))
-      .map(entry => {
-        const [date, time] = entry.Timestamp.split(" ");
-        const hour = parseInt(time.split(":")[0], 10);
-        return { date, hour };
-      });
+    .filter(entry => entry.Timestamp)
+    .map(entry => {
+      const ts = new Date(entry.Timestamp);
+      const date = ts.toISOString().split("T")[0];
+      const hour = ts.getHours();
+      return { date, hour };
+    });
 
     if (parsed.length === 0) {
       document.getElementById('stats').innerText = "No valid walks found.";
