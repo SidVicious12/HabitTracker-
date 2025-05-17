@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Habit Tracker Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Habits</h2>
+      </div>
+      <ul id="habit-list"></ul>
+    </aside>
+    <main class="main-content">
+      <div class="card">
+        <h1 id="chart-title"></h1>
+        <canvas id="habitChart"></canvas>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+  <script src="chart.js"></script>
+</body>
+</html>
