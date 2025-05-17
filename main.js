@@ -1,18 +1,24 @@
 const API_URL = 'https://script.google.com/macros/s/AKfycbwoTbwvIrcNLsoqtJTTbj6zSnTPf4Rg6SrsBX450HyO-bxSlCqAUHkQA6qticRGtv_SNg/exec';
 
+
 async function fetchData() {
   try {
     const res = await fetch(API_URL);
     const data = await res.json();
 
-    const parsed = data.map(entry => {
-      const [date, time] = entry.Timestamp.split(" ");
-      const hour = parseInt(time.split(":")[0], 10); // extract the hour
-      return { date, hour };
-    });
+    // ✅ Filter out any blank/malformed rows
+    const parsed = data
+      .filter(entry => entry.Timestamp && entry.Timestamp.includes(" "))
+      .map(entry => {
+        const [date, time] = entry.Timestamp.split(" ");
+        const hour = parseInt(time.split(":")[0], 10);
+        return { date, hour };
+      });
 
+    // ✅ Show walk count
     document.getElementById('stats').innerText = `Total Walks: ${parsed.length}`;
 
+    // ✅ Build the chart
     new Chart(document.getElementById("walkChart"), {
       type: 'bar',
       data: {
@@ -20,7 +26,7 @@ async function fetchData() {
         datasets: [{
           label: 'Hour of Walk',
           data: parsed.map(item => item.hour),
-          backgroundColor: '#9b59b6'
+          backgroundColor: '#2ecc71'
         }]
       },
       options: {
