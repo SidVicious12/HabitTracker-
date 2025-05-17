@@ -6,19 +6,23 @@ async function fetchData() {
     const res = await fetch(API_URL);
     const data = await res.json();
 
-    // ✅ Filter out any blank/malformed rows
+    console.log("Fetched data:", data); // 👈 Debug log
+
     const parsed = data
-      .filter(entry => entry.Timestamp && entry.Timestamp.includes(" "))
+      .filter(entry => entry && typeof entry.Timestamp === 'string' && entry.Timestamp.includes(" "))
       .map(entry => {
         const [date, time] = entry.Timestamp.split(" ");
         const hour = parseInt(time.split(":")[0], 10);
         return { date, hour };
       });
 
-    // ✅ Show walk count
+    if (parsed.length === 0) {
+      document.getElementById('stats').innerText = "No valid walks found.";
+      return;
+    }
+
     document.getElementById('stats').innerText = `Total Walks: ${parsed.length}`;
 
-    // ✅ Build the chart
     new Chart(document.getElementById("walkChart"), {
       type: 'bar',
       data: {
