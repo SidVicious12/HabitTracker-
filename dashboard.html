@@ -4,24 +4,21 @@
   <meta charset="UTF-8" />
   <title>Habit Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Habit Dashboard</h1>
-    <ul id="habit-list"></ul>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Habits</h2>
+      <ul id="habit-list"></ul>
+    </aside>
+    <main class="main-content">
+      <h1 id="chart-title"></h1>
+      <canvas id="habitChart"></canvas>
+    </main>
   </div>
   <script src="mockData.js"></script>
-  <script>
-    // Dynamically create links for each habit
-    const habitList = document.getElementById('habit-list');
-    Object.keys(mockData).forEach(habit => {
-      const li = document.createElement('li');
-      const link = document.createElement('a');
-      link.href = `chart.html?habit=${encodeURIComponent(habit)}`;
-      link.textContent = habit;
-      li.appendChild(link);
-      habitList.appendChild(li);
-    });
-  </script>
+  <script src="chartComponent.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
