@@ -4,6 +4,7 @@ function renderHabitChart(habit, data) {
   // Type detection
   const isNumber = val => typeof val === 'number' || !isNaN(Number(val));
   const isYesNo = val => /^(yes|no)$/i.test(val);
+  const isTime = val => /^\d{1,2}:\d{2}\s?(AM|PM)$/i.test(val);
 
   const sample = data[0].value;
   let chartType = 'bar';
@@ -15,6 +16,17 @@ function renderHabitChart(habit, data) {
     chartType = 'line';
   } else if (isYesNo(sample)) {
     dataset = data.map(d => d.value.toLowerCase() === 'yes' ? 1 : 0);
+    chartType = 'bar';
+  } else if (isTime(sample)) {
+    // Convert time to minutes since midnight
+    dataset = data.map(d => {
+      const [h, m, period] = d.value.match(/(\d{1,2}):(\d{2})\s?(AM|PM)/i).slice(1);
+      let hour = parseInt(h, 10);
+      const min = parseInt(m, 10);
+      if (/PM/i.test(period) && hour !== 12) hour += 12;
+      if (/AM/i.test(period) && hour === 12) hour = 0;
+      return hour * 60 + min;
+    });
     chartType = 'bar';
   } else {
     dataset = data.map(d => d.value);
