@@ -1,26 +1,18 @@
-const API_URL = 'https://script.google.com/macros/s/AKfycbwoTbwvIrcNLsoqtJTTbj6zSnTPf4Rg6SrsBX450HyO-bxSlCqAUHkQA6qticRGtv_SNg/exec';
-
+const API_URL = 'https://script.google.com/macros/s/AKfycbwoTbwvIrcNLsoqtJTTbj6zSnTPf4Rg6SrsBX450HyO-bxSlCqAUHkQA6qticRGtv_SNg/exec';const API_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
 
 async function fetchData() {
   try {
     const res = await fetch(API_URL);
     const data = await res.json();
 
-    console.log("Fetched data:", data); // 👈 Debug log
+    console.log("Fetched data:", data);
 
-    const parsed = data
-    .filter(entry => entry.Timestamp)
-    .map(entry => {
+    const parsed = data.map(entry => {
       const ts = new Date(entry.Timestamp);
       const date = ts.toISOString().split("T")[0];
       const hour = ts.getHours();
       return { date, hour };
     });
-
-    if (parsed.length === 0) {
-      document.getElementById('stats').innerText = "No valid walks found.";
-      return;
-    }
 
     document.getElementById('stats').innerText = `Total Walks: ${parsed.length}`;
 
@@ -31,7 +23,7 @@ async function fetchData() {
         datasets: [{
           label: 'Hour of Walk',
           data: parsed.map(item => item.hour),
-          backgroundColor: '#2ecc71'
+          backgroundColor: '#3498db'
         }]
       },
       options: {
