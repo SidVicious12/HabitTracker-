@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Walk Habit Tracker</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Habit Tracker Dashboard</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>My Daily Walks</h1>
-  <div id="stats">Loading...</div>
-  <canvas id="walkChart" width="400" height="200"></canvas>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Habits</h2>
+      <ul id="habit-list">
+        <!-- Habit icons/text injected here -->
+      </ul>
+    </aside>
+    <main class="main-content" id="main-content">
+      <!-- Habit cards injected here -->
+    </main>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
