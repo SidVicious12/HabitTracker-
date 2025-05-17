@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Habit Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Habit Dashboard</h1>
+    <ul id="habit-list"></ul>
+  </div>
+  <script src="mockData.js"></script>
+  <script>
+    // Dynamically create links for each habit
+    const habitList = document.getElementById('habit-list');
+    Object.keys(mockData).forEach(habit => {
+      const li = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = `chart.html?habit=${encodeURIComponent(habit)}`;
+      link.textContent = habit;
+      li.appendChild(link);
+      habitList.appendChild(li);
+    });
+  </script>
+</body>
+</html>

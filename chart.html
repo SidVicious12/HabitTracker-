@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Habit Chart</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
+    <h1 id="habit-title"></h1>
+    <canvas id="habitChart"></canvas>
+  </div>
+  <script src="mockData.js"></script>
+  <script src="chartComponent.js"></script>
+  <script>
+    // Get habit from URL
+    const params = new URLSearchParams(window.location.search);
+    const habit = params.get('habit');
+    document.getElementById('habit-title').textContent = habit;
+    // Render chart
+    renderHabitChart(habit, mockData[habit] || []);
+  </script>
+</body>
+</html>
