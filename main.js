@@ -1,4 +1,4 @@
-const API_URL = 'https://script.google.com/macros/s/AKfycbwoTbwvIrcNLsoqtJTTbj6zSnTPf4Rg6SrsBX450HyO-bxSlCqAUHkQA6qticRGtv_SNg/exec';const API_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwoTbwvIrcNLsoqtJTTbj6zSnTPf4Rg6SrsBX450HyO-bxSlCqAUHkQA6qticRGtv_SNg/exec';
 
 async function fetchData() {
   try {
