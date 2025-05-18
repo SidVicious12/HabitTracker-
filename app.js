@@ -5,6 +5,16 @@ const API_URL = "https://script.google.com/macros/s/AKfycby49OA0IMz2pooduRbACb_Q
 // Mock data for dev
 
 // ======= CORE =======
+async function main() {
+  const data = await loadData();
+  if (!data) {
+    alert("Failed to load habit data. Please check your connection or API.");
+    return;
+  }
+  allData = data;
+  allHabits = getHabitsFromMockData(data);
+  // ...rest of your logic
+}
 async function loadData() {
   if (USE_MOCK_DATA) {
     return mockData;
