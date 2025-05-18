@@ -1,7 +1,7 @@
 // ======= CONFIG =======
 const USE_MOCK_DATA = false;
 
-const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLiENxIdfkgsLpoeMCSgJS2GWITGsyhf76Rq37x0bfoD9vU0qPfMx-ESVIi1BeDII3HTAJ0wtkkDLCbag9zZ0l5hYJywnDQkBSf4ozz9rBURx3TI9mDy-CpfCgg1wdjBXRusuvqyswauiAQ60WyEaVKmeTZcAR0GsgjaWdoAqRmrYJS2WJ_8xyc2xhF2N8q9UccCWLfofs3jDGtV_AwLb02lu_B3MYcUO-4XX49k1SSTjYmB2kqtSJTOzDs34A0Rw10nzHOlzEcK3DHR2aUMo_it1mAgoQ&lib=MiNEQJsF8AAU5SAW2sxpOQU5n5CaguJ9K";
+const API_URL = "https://script.google.com/macros/s/AKfycbzlni5PmzcYtzeImvxfHdNjrb5N8c8jCq6dG_vLI8nlidoxLOq0sbpP-fCX6e5mX5kB/exec";
 // Mock data for dev
 
 // ======= CORE =======
