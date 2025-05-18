@@ -1,16 +1,27 @@
 // ======= CONFIG =======
-const USE_MOCK_DATA = true;
-const API_URL = "YOUR_APPS_SCRIPT_ENDPOINT";
+const USE_MOCK_DATA = false;
+const API_URL = "https://script.google.com/macros/s/AKfycby49OA0IMz2pooduRbACb_QcrLecwq95cz9fA-rJSfkW7K7j9PJw5G67rkF-YDdKrWf/exec"; // replace with your Web App URL
 
 // Mock data for dev
 
 // ======= CORE =======
 async function loadData() {
-  if (USE_MOCK_DATA) return mockData;
-  const res = await fetch(API_URL);
-  return await res.json();
+  if (USE_MOCK_DATA) {
+    return mockData;
+  } else {
+    try {
+      console.log("Loading data...");
+      const res = await fetch(API_URL);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return await res.json();
+    } catch (error) {
+      console.error("Failed to load data:", error);
+      return null;
+    }
+  }
 }
-
 let allHabits = [];
 let allData = {};
 
