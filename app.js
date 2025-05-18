@@ -1,6 +1,6 @@
 // ======= CONFIG =======
 const USE_MOCK_DATA = false;
-const API_URL = "https://script.google.com/macros/s/AKfycby49OA0IMz2pooduRbACb_QcrLecwq95cz9fA-rJSfkW7K7j9PJw5G67rkF-YDdKrWf/exec"; // replace with your Web App URL
+const API_URL = "https://script.google.com/macros/library/d/1FwUAFl40lM_g2OGQTmKsry79JcdPU9qRxqsu_mtUImFLhf_90-QNUsy2/1"; // replace with your Web App URL
 
 // Mock data for dev
 
@@ -34,6 +34,30 @@ async function loadData() {
 }
 let allHabits = [];
 let allData = {};
+
+function doGet(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("HABIT dashboard");
+  const data = sheet.getDataRange().getValues();
+
+  const headers = data[0];
+  const rows = data.slice(1);
+
+  const transformed = {};
+
+  for (let i = 1; i < headers.length; i++) {
+    const habit = headers[i];
+    transformed[habit] = rows.map(row => ({
+      date: row[0], // assumes column 0 is Date
+      value: row[i]
+    })).filter(entry => entry.value !== "");
+  }
+
+  return ContentService
+    .createTextOutput(JSON.stringify(transformed))
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader("Access-Control-Allow-Origin", "*");
+}
+
 
 function getHabitsFromMockData(data) {
   return Object.keys(data).filter(habit => habit !== "Date");
