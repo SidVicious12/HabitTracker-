@@ -1,6 +1,6 @@
 // ======= CONFIG =======
 const USE_MOCK_DATA = false;
-const API_URL = "https://script.google.com/macros/library/d/1FwUAFl40lM_g2OGQTmKsry79JcdPU9qRxqsu_mtUImFLhf_90-QNUsy2/1"; // replace with your Web App URL
+const API_URL = "https://script.google.com/macros/s/AKfycbzuR4ydAl83D3KMSzIMHGWi4N58eRsRyZ8fXgqm9x8LEd7BCIurjCQHFqMs9ILFiwQ8/exec"; // replace with your Web App URL
 
 // Mock data for dev
 
