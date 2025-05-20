@@ -1,4 +1,4 @@
-{{ ... }}
+
 // ======= CORE =======
 async function main() {
   const data = await loadData();
@@ -134,4 +134,3 @@ document.addEventListener("DOMContentLoaded", async () => {
 window.getHabitData = function(habit) {
   return allData[habit] || [];
 };
-{{ ... }}
