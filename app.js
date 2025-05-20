@@ -1,5 +1,36 @@
 
 // ======= CORE =======
+// ======= CONFIG =======
+const USE_MOCK_DATA = false;
+
+const API_URL = "https://script.google.com/macros/s/AKfycbzlni5PmzcYtzeImvxfHdNjrb5N8c8jCq6dG_vLI8nlidoxLOq0sbpP-fCX6e5mX5kB/exec";
+// Mock data for dev
+
+async function loadData() {
+  if (USE_MOCK_DATA) {
+    return mockData;
+  } else {
+    try {
+      console.log("Loading data...");
+      const res = await fetch(API_URL);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return await res.json();
+    } catch (error) {
+      console.error("Failed to load data:", error);
+      return null;
+    }
+  }
+}
+
+let allHabits = [];
+let allData = {};
+
+function getHabitsFromMockData(data) {
+  return Object.keys(data).filter(habit => habit !== "Date");
+}
+
 async function main() {
   const data = await loadData();
   if (!data) {
