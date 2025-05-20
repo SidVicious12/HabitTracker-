@@ -1,4 +1,6 @@
-function renderHabitChart(habit, data) {
+{{ ... }}
+// Mini chart for card
+function renderMiniHabitChart(habit, data, canvasId) {
   if (!data || data.length === 0) return;
 
   // Type detection
@@ -18,7 +20,6 @@ function renderHabitChart(habit, data) {
     dataset = data.map(d => d.value.toLowerCase() === 'yes' ? 1 : 0);
     chartType = 'bar';
   } else if (isTime(sample)) {
-    // Convert time to minutes since midnight
     dataset = data.map(d => {
       const [h, m, period] = d.value.match(/(\d{1,2}):(\d{2})\s?(AM|PM)/i).slice(1);
       let hour = parseInt(h, 10);
@@ -34,37 +35,40 @@ function renderHabitChart(habit, data) {
   }
 
   // Destroy previous chart if any
-  if (window.habitChartInstance) window.habitChartInstance.destroy();
+  if (window[`miniChart_${canvasId}`]) window[`miniChart_${canvasId}`].destroy();
 
-  window.habitChartInstance = new Chart(document.getElementById('habitChart').getContext('2d'), {
+  window[`miniChart_${canvasId}`] = new Chart(document.getElementById(canvasId).getContext('2d'), {
     type: chartType,
     data: {
       labels: labels,
       datasets: [{
         label: habit,
         data: dataset,
-        backgroundColor: '#1e90ff',
-        borderColor: '#1e90ff',
+        backgroundColor: '#ffd9b3',
+        borderColor: '#b05e19',
+        borderWidth: 2,
         fill: chartType === 'line',
-        tension: 0.3
+        tension: 0.35,
+        pointRadius: 0
       }]
     },
     options: {
-      responsive: true,
+      responsive: false,
       plugins: {
         legend: { display: false }
       },
       scales: {
         y: {
           beginAtZero: true,
-          ticks: { color: '#f9f9f9' },
-          grid: { color: '#23272f' }
+          ticks: { color: '#b05e19', font: { size: 10 } },
+          grid: { color: '#f2e5d7' }
         },
         x: {
-          ticks: { color: '#f9f9f9' },
-          grid: { color: '#23272f' }
+          ticks: { color: '#b05e19', font: { size: 10 }, maxRotation: 0 },
+          grid: { display: false }
         }
       }
     }
   });
 }
+{{ ... }}

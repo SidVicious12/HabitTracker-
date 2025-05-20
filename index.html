@@ -1,30 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Habit Tracker Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <div class="dashboard">
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <h2>Habits</h2>
+{{ ... }}
+  <body>
+    <header class="dashboard-header">
+      <h1>Welcome back, Sid!</h1>
+      <!-- Optional: Range toggle (static for now) -->
+      <div class="range-toggle">
+        <button class="active">Monthly</button>
+        <button disabled>Weekly</button>
       </div>
-      <ul id="habit-list"></ul>
-    </aside>
-    <main class="main-content">
-      <div class="card">
-        <h1 id="chart-title"></h1>
-        <div class="summary" id="summary"></div>
-        <canvas id="habitChart"></canvas>
-      </div>
-    </main>
-  </div>
-  <script src="mockData.js"></script>
-  <script src="app.js"></script>
-  <script src="chart.js"></script>
-</body>
+    </header>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Habits</h2>
+        </div>
+        <ul id="habit-list"></ul>
+      </aside>
+      <main class="main-content">
+        <div class="card-grid" id="card-grid">
+          <!-- Cards will be dynamically injected here -->
+        </div>
+      </main>
+    </div>
+    <script src="mockData.js"></script>
+    <script src="app.js"></script>
+    <script src="chart.js"></script>
+  </body>
 </html>
+{{ ... }}
