@@ -1,4 +1,3 @@
-{{ ... }}
 // Mini chart for card
 function renderMiniHabitChart(habit, data, canvasId) {
   if (!data || data.length === 0) return;
@@ -71,4 +70,3 @@ function renderMiniHabitChart(habit, data, canvasId) {
     }
   });
 }
-{{ ... }}
